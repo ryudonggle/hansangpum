@@ -5,6 +5,8 @@
 
 **사이트** https://hansangpum.vercel.app · **스택** Next.js 16 · Vercel · Supabase Postgres + Drizzle · pg_trgm · TypeSafe Jev · Vitest
 
+![데이터 흐름: 수집·정제 → 규칙 판정 → 애매한 쌍만 Jev → 묶기 → Supabase → 검색·상세 / 검수](docs/images/flow.png)
+
 ## 30초 요약
 
 | | |

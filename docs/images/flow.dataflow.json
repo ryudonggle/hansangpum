@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "한상품 — 품목제조보고 신고를 상품 단위로 묶는 흐름",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1080,
+      620
+    ]
+  },
+  "stages": [
+    {
+      "label": "① 수집·정제"
+    },
+    {
+      "label": "② 판정"
+    },
+    {
+      "label": "③ 묶기"
+    },
+    {
+      "label": "④ 저장·검수"
+    },
+    {
+      "label": "⑤ 서비스"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "prep",
+      "type": "external",
+      "label": "식품안전나라 C002",
+      "sublabel": "(신고 5,128건)",
+      "stage": 0,
+      "row": 0,
+      "tag": "공공 API",
+      "width": 140
+    },
+    {
+      "id": "rules",
+      "type": "backend",
+      "label": "규칙 판정",
+      "sublabel": "(확실한 쌍 결정)",
+      "stage": 1,
+      "row": 0,
+      "tag": "규칙",
+      "width": 140
+    },
+    {
+      "id": "jev",
+      "type": "cloud",
+      "label": "Jev 확률 판정",
+      "sublabel": "(애매한 쌍 3분류)",
+      "stage": 1,
+      "row": 2,
+      "tag": "AI",
+      "width": 140
+    },
+    {
+      "id": "grouping",
+      "type": "backend",
+      "label": "묶기",
+      "sublabel": "(union-find)",
+      "stage": 2,
+      "row": 0,
+      "tag": "group",
+      "width": 140
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "Supabase Postgres",
+      "sublabel": "(상품 4,837개)",
+      "stage": 3,
+      "row": 0,
+      "tag": "서울",
+      "width": 140
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "검색 · 상세",
+      "sublabel": "(Next.js·Vercel)",
+      "stage": 4,
+      "row": 0,
+      "tag": "pg_trgm",
+      "width": 140
+    },
+    {
+      "id": "admin",
+      "type": "frontend",
+      "label": "/admin 검수",
+      "sublabel": "(사람 판정)",
+      "stage": 3,
+      "row": 2,
+      "tag": "사람",
+      "width": 140
+    }
+  ],
+  "flows": [
+    {
+      "id": "score",
+      "from": "prep",
+      "to": "rules",
+      "label": "후보 쌍 점수",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sure",
+      "from": "rules",
+      "to": "grouping",
+      "label": "확실함",
+      "variant": "emphasis",
+      "route": "straight"
+    },
+    {
+      "id": "ambiguous",
+      "from": "rules",
+      "to": "jev",
+      "label": "애매한 314쌍",
+      "labelAt": [
+        315,
+        271
+      ]
+    },
+    {
+      "id": "auto",
+      "from": "jev",
+      "to": "grouping",
+      "label": "같음 ≥ 0.7"
+    },
+    {
+      "id": "load",
+      "from": "grouping",
+      "to": "db",
+      "label": "적재",
+      "variant": "emphasis"
+    },
+    {
+      "id": "serve",
+      "from": "db",
+      "to": "web",
+      "label": "상품 단위",
+      "variant": "emphasis"
+    },
+    {
+      "id": "review",
+      "from": "db",
+      "to": "admin",
+      "label": "검수 대기",
+      "labelAt": [
+        745,
+        271
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "결과",
+      "items": [
+        "신고 5,128건 → 상품 4,837개",
+        "규칙 203건 · Jev 74건 · 검수 14건 통합",
+        "자동으로 묶은 쌍 50개 중 46개 정확 (정밀도 92.0%)"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "비용",
+      "items": [
+        "Jev 2,849쌍 판정 $0.13 (쌍당 약 1,070토큰)",
+        "규칙 전환 후 Jev가 필요한 쌍 314개 (89%↓)",
+        "160만 건 전체 예상 $4~19"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "원칙",
+      "items": [
+        "코드로 알 수 있는 차이는 규칙, 어순·띄어쓰기 차이만 Jev",
+        "확신이 낮으면 묶지 않고 검수로 (정밀도 우선)",
+        "같은 상품 / OEM 형제 / 다른 상품 세 갈래"
+      ]
+    }
+  ]
+}
