@@ -1,0 +1,530 @@
+[
+ {
+  "no": 1,
+  "a": "20240320157461",
+  "b": "20240320157462",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.97,
+   "oem_sibling": 0,
+   "different_product": 0.03
+  }
+ },
+ {
+  "no": 2,
+  "a": "20170443338220",
+  "b": "20170443338218",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0,
+   "oem_sibling": 0,
+   "different_product": 1
+  }
+ },
+ {
+  "no": 3,
+  "a": "201504932081180",
+  "b": "20150493208285",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 4,
+  "a": "20250483015143",
+  "b": "20250483015340",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 5,
+  "a": "201504932081086",
+  "b": "20150493208960",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.51,
+   "oem_sibling": 0.4,
+   "different_product": 0.09
+  }
+ },
+ {
+  "no": 6,
+  "a": "20100308291210",
+  "b": "2010030829186",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 7,
+  "a": "20150493208594",
+  "b": "20150493208701",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.18,
+   "oem_sibling": 0.49,
+   "different_product": 0.33
+  }
+ },
+ {
+  "no": 8,
+  "a": "201504932081331",
+  "b": "20150493208699",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.41,
+   "oem_sibling": 0.5,
+   "different_product": 0.09
+  }
+ },
+ {
+  "no": 9,
+  "a": "20250483015648",
+  "b": "20250483015712",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.14,
+   "oem_sibling": 0.02,
+   "different_product": 0.84
+  }
+ },
+ {
+  "no": 10,
+  "a": "201904421493208",
+  "b": "2002046107317040",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.9,
+   "oem_sibling": 0.07,
+   "different_product": 0.03
+  }
+ },
+ {
+  "no": 11,
+  "a": "20210280073147",
+  "b": "20210280073498",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.7,
+   "oem_sibling": 0.01,
+   "different_product": 0.29
+  }
+ },
+ {
+  "no": 12,
+  "a": "20150493208636",
+  "b": "201504932081113",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.54,
+   "oem_sibling": 0.11,
+   "different_product": 0.35
+  }
+ },
+ {
+  "no": 13,
+  "a": "20080493074745",
+  "b": "200804930741217",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.68,
+   "oem_sibling": 0.07,
+   "different_product": 0.25
+  }
+ },
+ {
+  "no": 14,
+  "a": "20150493208165",
+  "b": "201504932081103",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.39,
+   "oem_sibling": 0.12,
+   "different_product": 0.49
+  }
+ },
+ {
+  "no": 15,
+  "a": "20220396175188",
+  "b": "20220396175931",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 16,
+  "a": "20120560575113",
+  "b": "2012056057596",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.43,
+   "oem_sibling": 0.57,
+   "different_product": 0
+  }
+ },
+ {
+  "no": 17,
+  "a": "20150493208255",
+  "b": "20150493208165",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 18,
+  "a": "20060275157108",
+  "b": "20060275157101",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 19,
+  "a": "2002046107313471",
+  "b": "201904421491347",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 20,
+  "a": "20210424050965",
+  "b": "20210424050873",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 21,
+  "a": "20240320157545",
+  "b": "20240320157543",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.02,
+   "oem_sibling": 0,
+   "different_product": 0.98
+  }
+ },
+ {
+  "no": 22,
+  "a": "20240320157660",
+  "b": "20240320157525",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.04,
+   "oem_sibling": 0,
+   "different_product": 0.96
+  }
+ },
+ {
+  "no": 23,
+  "a": "200303806612623",
+  "b": "200303806612696",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 24,
+  "a": "20220299544428",
+  "b": "20220299544259",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 25,
+  "a": "20160375275157",
+  "b": "20200393064102",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 26,
+  "a": "20040355580132",
+  "b": "20040355580155",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.12,
+   "oem_sibling": 0.87,
+   "different_product": 0.01
+  }
+ },
+ {
+  "no": 27,
+  "a": "20040355580563",
+  "b": "20040355580479",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.04,
+   "oem_sibling": 0.89,
+   "different_product": 0.07
+  }
+ },
+ {
+  "no": 28,
+  "a": "201504932081086",
+  "b": "20150493208917",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.14,
+   "oem_sibling": 0.84,
+   "different_product": 0.02
+  }
+ },
+ {
+  "no": 29,
+  "a": "20190442149645",
+  "b": "2002046107311115",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 30,
+  "a": "202304816365",
+  "b": "2023048163611",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 31,
+  "a": "20150493208341",
+  "b": "20150493208342",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.01,
+   "oem_sibling": 0,
+   "different_product": 0.99
+  }
+ },
+ {
+  "no": 32,
+  "a": "20210504123205",
+  "b": "20150493208960",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 33,
+  "a": "20240320157462",
+  "b": "20240320157119",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.01,
+   "oem_sibling": 0,
+   "different_product": 0.99
+  }
+ },
+ {
+  "no": 34,
+  "a": "20160116016113",
+  "b": "20160116016718",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.98,
+   "oem_sibling": 0,
+   "different_product": 0.02
+  }
+ },
+ {
+  "no": 35,
+  "a": "20150493208464",
+  "b": "20150493208879",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.36,
+   "oem_sibling": 0.45,
+   "different_product": 0.19
+  }
+ },
+ {
+  "no": 36,
+  "a": "20240320157242",
+  "b": "20240320157244",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.08,
+   "oem_sibling": 0,
+   "different_product": 0.92
+  }
+ },
+ {
+  "no": 37,
+  "a": "20150493208993",
+  "b": "2021050412321",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 38,
+  "a": "201504932081088",
+  "b": "20150493208702",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.18,
+   "oem_sibling": 0.8099999999999999,
+   "different_product": 0.01
+  }
+ },
+ {
+  "no": 39,
+  "a": "201504932081088",
+  "b": "201504932081294",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.23,
+   "oem_sibling": 0.77,
+   "different_product": 0
+  }
+ },
+ {
+  "no": 40,
+  "a": "20240320157611",
+  "b": "20240320157612",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.98,
+   "oem_sibling": 0,
+   "different_product": 0.02
+  }
+ },
+ {
+  "no": 41,
+  "a": "20210504123206",
+  "b": "2021050412395",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.68,
+   "oem_sibling": 0.32,
+   "different_product": 0
+  }
+ },
+ {
+  "no": 42,
+  "a": "20040355580410",
+  "b": "20040355580353",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.02,
+   "oem_sibling": 0.16,
+   "different_product": 0.82
+  }
+ },
+ {
+  "no": 43,
+  "a": "200804930741241",
+  "b": "200804930741236",
+  "band": "separate",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 44,
+  "a": "20040332743367",
+  "b": "20040332743284",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.91,
+   "oem_sibling": 0,
+   "different_product": 0.09
+  }
+ },
+ {
+  "no": 45,
+  "a": "2020049145653",
+  "b": "2020049145632",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.53,
+   "oem_sibling": 0.02,
+   "different_product": 0.45
+  }
+ },
+ {
+  "no": 46,
+  "a": "2015045818869",
+  "b": "2015045818870",
+  "band": "ambiguous",
+  "jev": "different_product",
+  "jevProb": {
+   "same_product": 0.02,
+   "oem_sibling": 0,
+   "different_product": 0.98
+  }
+ },
+ {
+  "no": 47,
+  "a": "20170443338274",
+  "b": "20170443338275",
+  "band": "ambiguous",
+  "jev": "same_product",
+  "jevProb": {
+   "same_product": 0.59,
+   "oem_sibling": 0.03,
+   "different_product": 0.38
+  }
+ },
+ {
+  "no": 48,
+  "a": "20190447031212",
+  "b": "19970440082270",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ },
+ {
+  "no": 49,
+  "a": "20150493208902",
+  "b": "2021050412397",
+  "band": "ambiguous",
+  "jev": "oem_sibling",
+  "jevProb": {
+   "same_product": 0.08,
+   "oem_sibling": 0.64,
+   "different_product": 0.28
+  }
+ },
+ {
+  "no": 50,
+  "a": "20160338669451",
+  "b": "20160338669405",
+  "band": "merge",
+  "jev": null,
+  "jevProb": null
+ }
+]
