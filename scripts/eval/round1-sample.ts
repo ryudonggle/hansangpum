@@ -1,8 +1,8 @@
 // 정답셋 만들기: 구간별로 골고루 뽑은 쌍을 CSV로 내보낸다. 사람이 "정답" 칸을 채운다.
 // 규칙·Jev 답은 CSV에 넣지 않는다(보고 따라 적지 않도록). 답은 labels-key.json에 따로 둔다.
-// 사용: node scripts/label-sheet.ts 닭가슴살
+// 사용: node scripts/eval/round1-sample.ts 닭가슴살
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { readRaw } from "./raw.ts";
+import { readRaw } from "../raw.ts";
 
 const name = process.argv[2] || "닭가슴살";
 const readJsonl = (p: string) => (existsSync(p) ? readFileSync(p, "utf8").trim().split("\n").filter(Boolean).map((l) => JSON.parse(l)) : []);
@@ -31,7 +31,7 @@ const lines = rows.map((p, i) => {
   const [a, b] = [raw.get(p.a)!, raw.get(p.b)!];
   return [i + 1, a.PRDLST_NM, a.BSSH_NM, a.PRDLST_DCNM, b.PRDLST_NM, b.BSSH_NM, b.PRDLST_DCNM, p.score.materials.toFixed(2), "", ""].map(csv).join(",");
 });
-mkdirSync("data/labels", { recursive: true });
-writeFileSync(`data/labels/labels-${name}.csv`, "﻿" + [header.map(csv).join(","), ...lines].join("\r\n") + "\r\n");
-writeFileSync(`data/labels/labels-${name}-key.json`, JSON.stringify(rows.map((p, i) => ({ no: i + 1, a: p.a, b: p.b, band: p.band, jev: p.j?.relation ?? null, jevProb: p.j?.probabilities ?? null })), null, 1));
-console.log(`정답셋 ${rows.length}쌍 → data/labels/labels-${name}.csv (엑셀로 열어 "정답" 칸 채우기)`);
+mkdirSync(`data/labels/${name}`, { recursive: true });
+writeFileSync(`data/labels/${name}/round1-sheet.csv`, "﻿" + [header.map(csv).join(","), ...lines].join("\r\n") + "\r\n");
+writeFileSync(`data/labels/${name}/round1-key.json`, JSON.stringify(rows.map((p, i) => ({ no: i + 1, a: p.a, b: p.b, band: p.band, jev: p.j?.relation ?? null, jevProb: p.j?.probabilities ?? null })), null, 1));
+console.log(`정답셋 ${rows.length}쌍 → data/labels/${name}/round1-sheet.csv (엑셀로 열어 "정답" 칸 채우기)`);

@@ -1,7 +1,7 @@
 // 사용자 행동 로그: 검색·결과 클릭·상세 보기·외부 링크. 개인정보 없이 브라우저마다 임의의 세션 id만 남긴다.
 import { NextResponse } from "next/server";
 import { sql } from "../../../db/client.ts";
-import { allow, clientIp } from "../../../lib/rate-limit.ts";
+import { allow, clientIp } from "../../../lib/web/rate-limit.ts";
 
 const TYPES = new Set(["search", "result_click", "product_view", "outbound_click"]);
 const str = (v: unknown, max: number) => (typeof v === "string" && v.length > 0 ? v.slice(0, max) : null);

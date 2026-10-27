@@ -8,3 +8,4 @@ next-env.d.ts
 .taste-skill/
 .vercel
 PLAN.md
+data/labels/**/*.csv

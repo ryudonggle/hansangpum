@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { ADMIN_COOKIE, DECISIONS, dailyEvents, isAdmin, reviewQueue, topQueries, type DayRow } from "../../lib/admin.ts";
-import { overview } from "../../lib/queries.ts";
+import { ADMIN_COOKIE, DECISIONS, dailyEvents, isAdmin, reviewQueue, topQueries, type DayRow } from "../../lib/web/admin.ts";
+import { overview } from "../../lib/web/queries.ts";
 import { QUALITY } from "../../lib/quality.ts";
 import { decideAction, logout } from "./actions.ts";
 import { date, n } from "../format.ts";

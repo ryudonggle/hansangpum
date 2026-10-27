@@ -96,8 +96,8 @@ await db.transaction(async (tx) => {
 
   // 7. 정답셋 (1차·2차)
   for (const [keyFile, answerFile] of [
-    [`data/labels/labels-${name}-key.json`, `data/labels/labels-${name}-answers.json`],
-    [`data/labels/labels-${name}-v2-key.json`, `data/labels/labels-${name}-v2-answers.json`],
+    [`data/labels/${name}/round1-key.json`, `data/labels/${name}/round1-answers.json`],
+    [`data/labels/${name}/round2-key.json`, `data/labels/${name}/round2-answers.json`],
   ]) {
     if (!existsSync(keyFile) || !existsSync(answerFile)) continue;
     const { labeler, answers } = JSON.parse(readFileSync(answerFile, "utf8"));

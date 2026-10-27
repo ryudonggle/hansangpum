@@ -1,17 +1,17 @@
 // 정답셋 2차: 1차 50쌍과 겹치지 않게, 현재 파이프라인 결과 구간(stratum)별로 뽑는다.
 // 구간별 전체 쌍 수도 저장해 두어, 평가 때 표본을 전체 비율로 되돌려(가중) 추정한다.
-// 사용: node scripts/label-sample-v2.ts 닭가슴살
+// 사용: node scripts/eval/round2-sample.ts 닭가슴살
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { pairKey } from "../lib/group.ts";
-import { jaccard, scorePair } from "../lib/score.ts";
-import { sameCompanyFamily, type NormalizedRecord } from "../lib/normalize.ts";
+import { pairKey } from "../../lib/group.ts";
+import { jaccard, scorePair } from "../../lib/score.ts";
+import { sameCompanyFamily, type NormalizedRecord } from "../../lib/normalize.ts";
 
 const name = process.argv[2] || "닭가슴살";
 const readJsonl = (p: string) => (existsSync(p) ? readFileSync(p, "utf8").trim().split("\n").filter(Boolean).map((l) => JSON.parse(l)) : []);
 const recs: NormalizedRecord[] = readJsonl(`data/work/normalized-${name}.jsonl`);
 const candidates = readJsonl(`data/work/candidates-${name}.jsonl`);
 const grouping = JSON.parse(readFileSync(`data/work/groups-${name}.json`, "utf8"));
-const used = new Set(JSON.parse(readFileSync(`data/labels/labels-${name}-key.json`, "utf8")).map((k: { a: string; b: string }) => pairKey(k.a, k.b)));
+const used = new Set(JSON.parse(readFileSync(`data/labels/${name}/round1-key.json`, "utf8")).map((k: { a: string; b: string }) => pairKey(k.a, k.b)));
 
 const groupOf = new Map<string, string>();
 for (const [g, ids] of Object.entries(grouping.groups as Record<string, string[]>)) for (const id of ids) groupOf.set(id, g);
@@ -49,5 +49,5 @@ const sizes = { merged: 40, review: 30, ambiguousKept: 20, ruleSeparate: 30, out
 const rows: { no: number; a: string; b: string; stratum: string }[] = [];
 for (const [s, n] of Object.entries(sizes))
   for (const p of sample(strata[s].filter((p) => !used.has(pairKey(p.a, p.b))), n)) rows.push({ no: rows.length + 1, a: p.a, b: p.b, stratum: s });
-writeFileSync(`data/labels/labels-${name}-v2-key.json`, JSON.stringify({ population: Object.fromEntries(Object.entries(strata).map(([k, v]) => [k, v.length])), rows }, null, 1));
+writeFileSync(`data/labels/${name}/round2-key.json`, JSON.stringify({ population: Object.fromEntries(Object.entries(strata).map(([k, v]) => [k, v.length])), rows }, null, 1));
 console.log("구간별 전체 쌍 수:", Object.fromEntries(Object.entries(strata).map(([k, v]) => [k, v.length])), "→ 표본", rows.length);

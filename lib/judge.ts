@@ -19,7 +19,7 @@ export const RELATIONS = {
 } as const;
 export type Relation = keyof typeof RELATIONS;
 
-// Jev 확률 기준 (정답셋으로 정함, scripts/evaluate.ts)
+// Jev 확률 기준 (정답셋으로 정함, scripts/eval/round1-evaluate.ts)
 export const SAME_MIN = 0.7; // 이 이상이면 자동으로 묶는다
 export const REVIEW_MIN = 0.35; // 이 사이면 사람이 /admin에서 본다
 // 한쪽에 이 글자 수 이상 더 붙은 쌍(바게트샌드↔샌드, 마라꿔바로우↔꿔바로우)은 Jev가 높은 확신으로 틀리는 일이 많아

@@ -1,15 +1,15 @@
 // 최종 시험용 정답셋: 규칙 동결 뒤 한 번만 쓴다.
 // - 1·2차 정답셋에 나온 레코드가 들어간 쌍은 모두 뺀다 (규칙을 고칠 때 본 이름이라 누출 가능)
 // - 코드·결과 파일 해시를 함께 저장해, 평가 때 동결 이후 바뀐 게 없는지 확인한다
-// 사용: node scripts/label-sample-test.ts 닭가슴살
+// 사용: node scripts/eval/final-sample.ts 닭가슴살
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { pairKey } from "../lib/group.ts";
-import { jaccard, scorePair } from "../lib/score.ts";
-import { sameCompanyFamily, type NormalizedRecord } from "../lib/normalize.ts";
+import { pairKey } from "../../lib/group.ts";
+import { jaccard, scorePair } from "../../lib/score.ts";
+import { sameCompanyFamily, type NormalizedRecord } from "../../lib/normalize.ts";
 
 const name = process.argv[2] || "닭가슴살";
-const out = `data/labels/labels-${name}-test-key.json`;
+const out = `data/labels/${name}/final-key.json`;
 if (existsSync(out)) throw new Error(`${out}가 이미 있습니다. 시험용 표본은 한 번만 뽑습니다.`);
 
 const readJsonl = (p: string) => (existsSync(p) ? readFileSync(p, "utf8").trim().split("\n").filter(Boolean).map((l) => JSON.parse(l)) : []);
@@ -19,8 +19,8 @@ const grouping = JSON.parse(readFileSync(`data/work/groups-${name}.json`, "utf8"
 
 // 이미 본 레코드
 const seen = new Set<string>();
-const v1 = JSON.parse(readFileSync(`data/labels/labels-${name}-key.json`, "utf8"));
-const v2 = JSON.parse(readFileSync(`data/labels/labels-${name}-v2-key.json`, "utf8")).rows;
+const v1 = JSON.parse(readFileSync(`data/labels/${name}/round1-key.json`, "utf8"));
+const v2 = JSON.parse(readFileSync(`data/labels/${name}/round2-key.json`, "utf8")).rows;
 for (const k of [...v1, ...v2]) seen.add(k.a), seen.add(k.b);
 const fresh = (p: { a: string; b: string }) => !seen.has(p.a) && !seen.has(p.b);
 

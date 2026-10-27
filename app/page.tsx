@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { mostMerged, overview, searchGroups } from "../lib/queries.ts";
+import { mostMerged, overview, searchGroups } from "../lib/web/queries.ts";
 import { ResultList } from "./results.tsx";
 import { LogOnMount } from "./track.tsx";
 import { n } from "./format.ts";

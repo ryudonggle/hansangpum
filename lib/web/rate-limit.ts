@@ -1,7 +1,7 @@
 // 요청 횟수 제한 (rate_limits 표). 서버에서만 부른다.
 import "server-only";
 import { createHmac } from "node:crypto";
-import { sql } from "../db/client.ts";
+import { sql } from "../../db/client.ts";
 
 // IP는 그대로 저장하지 않고 서버 비밀값으로 서명한 해시 앞부분만 쓴다 (IPv4는 맨 해시면 되돌릴 수 있다)
 const ipKey = (ip: string) => createHmac("sha256", process.env.ADMIN_PASSWORD ?? "").update(ip).digest("hex").slice(0, 16);

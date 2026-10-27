@@ -1,12 +1,12 @@
 // 정답셋으로 "같은 상품" 판정 품질을 잰다: 규칙만 vs 규칙+Jev vs 최종 묶음(연쇄 방지 포함)
-// 사용: node scripts/evaluate.ts 닭가슴살
+// 사용: node scripts/eval/round1-evaluate.ts 닭가슴살
 import { readFileSync } from "node:fs";
-import { SAME_MIN } from "../lib/judge.ts";
+import { SAME_MIN } from "../../lib/judge.ts";
 
 const name = process.argv[2] || "닭가슴살";
 const keys: { no: number; a: string; b: string; band: string; jev: string | null; jevProb: Record<string, number> | null }[] =
-  JSON.parse(readFileSync(`data/labels/labels-${name}-key.json`, "utf8"));
-const { answers } = JSON.parse(readFileSync(`data/labels/labels-${name}-answers.json`, "utf8"));
+  JSON.parse(readFileSync(`data/labels/${name}/round1-key.json`, "utf8"));
+const { answers } = JSON.parse(readFileSync(`data/labels/${name}/round1-answers.json`, "utf8"));
 const { groups } = JSON.parse(readFileSync(`data/work/groups-${name}.json`, "utf8"));
 const groupOf = new Map<string, string>();
 for (const [root, ids] of Object.entries(groups as Record<string, string[]>)) for (const id of ids) groupOf.set(id, root);

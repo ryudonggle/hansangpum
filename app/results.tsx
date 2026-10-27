@@ -1,7 +1,7 @@
 import { History } from "./history.tsx";
 import { TrackedLink } from "./track.tsx";
 import { date, n } from "./format.ts";
-import type { GroupHit } from "../lib/queries.ts";
+import type { GroupHit } from "../lib/web/queries.ts";
 
 export function ResultList({ hits, query }: { hits: GroupHit[]; query?: string }) {
   return (

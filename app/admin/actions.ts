@@ -2,8 +2,8 @@
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { ADMIN_COOKIE, DECISIONS, adminToken, decide, isAdmin, passwordMatches, type Decision } from "../../lib/admin.ts";
-import { allow, clientIp } from "../../lib/rate-limit.ts";
+import { ADMIN_COOKIE, DECISIONS, adminToken, decide, isAdmin, passwordMatches, type Decision } from "../../lib/web/admin.ts";
+import { allow, clientIp } from "../../lib/web/rate-limit.ts";
 
 // 비밀번호 대입 막기: IP마다 2시간 5번, 전체 1시간 30번 (맞든 틀리든 시도마다 센다)
 export async function login(_: { error?: string } | undefined, form: FormData) {

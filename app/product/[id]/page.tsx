@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { groupDetail } from "../../../lib/queries.ts";
+import { groupDetail } from "../../../lib/web/queries.ts";
 import { History } from "../../history.tsx";
 import { LogOnMount, TrackedA } from "../../track.tsx";
 import { date, n, splitMaterials } from "../../format.ts";

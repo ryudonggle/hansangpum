@@ -1,12 +1,12 @@
 // 정답셋 2차 평가: 쌍마다 "현재" 묶음 결과를 보고, 표본을 뽑은 구간(stratum)의 크기로 가중해 전체를 추정한다.
 // (구간 = 표본을 뽑을 때의 결과. 규칙이 바뀌어도 가중치는 그대로 쓸 수 있다: 층화 표본의 Horvitz–Thompson 추정)
-// 사용: node scripts/evaluate-v2.ts 닭가슴살
+// 사용: node scripts/eval/round2-evaluate.ts 닭가슴살
 import { readFileSync } from "node:fs";
-import { pairKey } from "../lib/group.ts";
+import { pairKey } from "../../lib/group.ts";
 
 const name = process.argv[2] || "닭가슴살";
-const { population, rows } = JSON.parse(readFileSync(`data/labels/labels-${name}-v2-key.json`, "utf8"));
-const { answers } = JSON.parse(readFileSync(`data/labels/labels-${name}-v2-answers.json`, "utf8"));
+const { population, rows } = JSON.parse(readFileSync(`data/labels/${name}/round2-key.json`, "utf8"));
+const { answers } = JSON.parse(readFileSync(`data/labels/${name}/round2-answers.json`, "utf8"));
 const grouping = JSON.parse(readFileSync(`data/work/groups-${name}.json`, "utf8"));
 const groupOf = new Map<string, string>();
 for (const [g, ids] of Object.entries(grouping.groups as Record<string, string[]>)) for (const id of ids) groupOf.set(id, g);

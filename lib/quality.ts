@@ -1,4 +1,4 @@
-// 최종 시험 결과 (동결 버전, 2026-10-26). scripts/evaluate-test.ts 출력 그대로.
+// 최종 시험 결과 (동결 버전, 2026-10-26). scripts/eval/final-evaluate.ts 출력 그대로.
 // 규칙을 바꾸면 이 숫자는 새 버전에 해당하지 않는다 → 새 시험셋으로 다시 잰다.
 export const QUALITY = {
   measuredAt: "2026-10-26",

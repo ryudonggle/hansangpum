@@ -1049,5 +1049,33 @@
    "b": "20220396175908",
    "stratum": "outsideCandidates"
   }
- ]
+ ],
+ "reproduced": {
+  "at": "2026-10-27T01:01:09.903Z",
+  "note": "C002만 다시 정제해 같은 점수 확인. 파일 이동·실행 스크립트 변경(사람 판정·C006 옵션) 뒤 기록",
+  "files": {
+   "lib/group.ts": "3f7ee1a9979b0ce12f53e624aa174051acd91e2c47e40fd631f6bda719d4c8ac",
+   "lib/judge.ts": "7d338f4919e45ee49b99a29090ed90a958629956a68e462a10a3172901f0a42b",
+   "lib/normalize.ts": "1243b518c22491a577f888cd6d29a74ce0a6f518cb57a7625914cc812ea2fbd5",
+   "lib/quality.ts": "c0bb0c4445c51750bad9d96b34f6a42385cb8e5e37ec585d7ae92b1ef5612151",
+   "lib/score.ts": "40f427209ea64a98c3d257dc87d5f86d87be8b11ef7b03ec75dc0334692747ca",
+   "scripts/candidates.ts": "ac324bef5e310f8a7f9e771ec1e26f9bb7c05593ed91c9ea075874818087c7f2",
+   "scripts/ingest-scan.mjs": "5b28b86c1f76d5c6ba0da0ec7f294882ca02172d7bdecfd2b46d48f9729522f1",
+   "scripts/ingest.mjs": "3906d89044a15ba9dcd5d4faa50783a6a4c359ae399e4dbd56f4391ccbc4f59b",
+   "scripts/judge.ts": "8a0d83adbe0362477ba8c489ce0bb36dc6f57e64add6e3e1712980390729c984",
+   "scripts/load.ts": "c674c55c13537d32a1e25f3c64b7692d1338a34b9c11371cf8afc2a075d40d3f",
+   "scripts/normalize.ts": "f8e907812d111b938494ee864f783f42c7d79baea30a9a14859ba935aa7fae40",
+   "scripts/pull-human.ts": "6c74d119db2fd14fafd933ee7d7aff915d7d85fbca4ac17f3a161336f8e37153",
+   "scripts/raw.ts": "371184c90ed23e9507a7de41544998a5462c130d3c36cf305121b47cd795991d",
+   "scripts/run-grouping.ts": "5942b80f2bcc2eea6d7e33e8d85758ebc23be851077319a2e3b11e8f4c53fb61",
+   "scripts/eval/final-evaluate.ts": "b55a547677df0555b47a259e473172b332a98b196815d3d17d79209ac2bc3905",
+   "scripts/eval/final-sample.ts": "bb35a7ac2b11c222cf9592700bc67dc36c934e4654afcf80bff924a398ee1b98",
+   "scripts/eval/round1-evaluate.ts": "6092d9411361879503c6223c8de9280edd022241604b270025c8071ae92369b0",
+   "scripts/eval/round1-sample.ts": "77bd57ba11aa47b2cce07e64565b0fdb00cdfffc8b84f6ca86059d4397baaeb1",
+   "scripts/eval/round2-evaluate.ts": "eaf95c141cd79f40231b6f87b0d0a38be494907796577c4f2a5be4083d75db23",
+   "scripts/eval/round2-sample.ts": "7b5dfc8e9c45cd11a106931ef066d677363c60a67c1a735d5bca7f18c8d8f857",
+   "data/work/groups-닭가슴살.json": "b5ae1cdb5319f2b433032ed9dcd53848dc4037b84cbbb3ce3d7a3a7565ee962b",
+   "data/work/candidates-닭가슴살.jsonl": "033758ebe838e524f8d3404b8ad2bb53a0bc691504440890dc3b7f0f852faf34"
+  }
+ }
 }

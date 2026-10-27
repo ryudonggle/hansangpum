@@ -1,7 +1,7 @@
 // /admin 조회·검수. 서버에서만 부른다.
 import "server-only";
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { sql } from "../db/client.ts";
+import { sql } from "../../db/client.ts";
 
 const CATEGORY = "닭가슴살";
 export const DECISIONS = ["같음", "OEM", "다름"] as const;

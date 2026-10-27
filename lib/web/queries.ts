@@ -1,7 +1,7 @@
 // 화면에서 쓰는 조회. 서버에서만 부른다.
 import "server-only";
-import { sql } from "../db/client.ts";
-import { normalizeName } from "./normalize.ts";
+import { sql } from "../../db/client.ts";
+import { normalizeName } from "../normalize.ts";
 
 export type GroupHit = {
   id: string;
