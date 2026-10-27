@@ -6,9 +6,10 @@ import type { RawRecord } from "../lib/normalize.ts";
 export const SERVICES = ["C002", "C006"] as const;
 export type SourcedRecord = RawRecord & { _service: (typeof SERVICES)[number]; _matched_by?: string[] };
 
-export function readRaw(name: string): SourcedRecord[] {
+// services로 일부만 읽을 수 있다 (최종 시험은 C002만으로 동결했다)
+export function readRaw(name: string, services: readonly string[] = SERVICES): SourcedRecord[] {
   const byNo = new Map<string, SourcedRecord>();
-  for (const svc of SERVICES) {
+  for (const svc of SERVICES.filter((s) => services.includes(s))) {
     const p = `data/raw/${svc.toLowerCase()}-${name}.jsonl`;
     if (!existsSync(p)) continue;
     for (const line of readFileSync(p, "utf8").split("\n")) {

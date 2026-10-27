@@ -1,11 +1,12 @@
 // data/raw/c002·c006-<이름>.jsonl(식품·축산물) → data/work/normalized-<이름>.jsonl
-// 사용: node scripts/normalize.ts 닭가슴살
+// 사용: node scripts/normalize.ts 닭가슴살 [--services=C002] (기본: C002·C006 모두)
 import { mkdirSync, writeFileSync } from "node:fs";
 import { normalizeRecord } from "../lib/normalize.ts";
-import { readRaw } from "./raw.ts";
+import { readRaw, SERVICES } from "./raw.ts";
 
 const name = process.argv[2] || "닭가슴살";
-const rows = readRaw(name);
+const services = process.argv.find((a) => a.startsWith("--services="))?.slice(11).split(",") ?? SERVICES;
+const rows = readRaw(name, services);
 const out = rows.map(normalizeRecord);
 
 mkdirSync("data/work", { recursive: true });
