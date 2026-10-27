@@ -1,0 +1,7 @@
+.env
+.env.*
+data/
+.taste-skill/
+.next/
+node_modules/
+*.tsbuildinfo

@@ -1,0 +1,36 @@
+{
+  "name": "hansangpum",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "normalize": "node scripts/normalize.ts",
+    "typecheck": "tsc -p .",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "load": "node scripts/load.ts",
+    "regroup": "node scripts/pull-human.ts 닭가슴살 && node scripts/run-grouping.ts 닭가슴살 && node scripts/load.ts 닭가슴살",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "drizzle-kit": "^0.31.11",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.4",
+    "next": "^16.4.3",
+    "postgres": "^3.4.9",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

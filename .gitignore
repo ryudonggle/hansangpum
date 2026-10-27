@@ -1,0 +1,10 @@
+node_modules/
+.env
+data/raw/
+.next/
+data/work/
+next-env.d.ts
+*.tsbuildinfo
+.taste-skill/
+.vercel
+PLAN.md
