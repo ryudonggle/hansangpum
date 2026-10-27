@@ -10,8 +10,9 @@ import { readRaw } from "./raw.ts";
 
 const name = process.argv[2] || "닭가슴살";
 const readJsonl = (p: string) => (existsSync(p) ? readFileSync(p, "utf8").trim().split("\n").filter(Boolean).map((l) => JSON.parse(l)) : []);
-const raw = readRaw(name);
 const norm = new Map<string, NormalizedRecord>(readJsonl(`data/work/normalized-${name}.jsonl`).map((r) => [r.reportNo, r]));
+// 정제한 레코드만 올린다 (normalize --services=C002로 돌렸으면 C006 원본은 빠진다)
+const raw = readRaw(name).filter((r) => norm.has(r.PRDLST_REPORT_NO));
 const candidates = readJsonl(`data/work/candidates-${name}.jsonl`);
 const judgments = readJsonl(`data/work/judgments-${name}.jsonl`);
 const grouping = JSON.parse(readFileSync(`data/work/groups-${name}.json`, "utf8"));

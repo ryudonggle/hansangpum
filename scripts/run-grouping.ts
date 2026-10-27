@@ -1,5 +1,5 @@
-// 규칙 묶기 + Jev 판정 + 사람 판정 → 묶음·OEM 형제 링크·검수 대기열 → data/work/groups-<이름>.json
-// 사용: node scripts/run-grouping.ts 닭가슴살 (사람 판정 반영 전체: npm run regroup)
+// 규칙 묶기 + Jev 판정 + 검수 판정(사람·Claude) → 묶음·OEM 형제 링크·검수 대기열 → data/work/groups-<이름>.json
+// 사용: node scripts/run-grouping.ts 닭가슴살 (검수 판정 반영 전체: npm run regroup)
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { buildGroups, pairKey, type Edge } from "../lib/group.ts";
 import { AUTO_MAX_EXTRA_CHARS, REVIEW_MIN, SAME_MIN } from "../lib/judge.ts";
@@ -7,7 +7,7 @@ import { AUTO_MAX_EXTRA_CHARS, REVIEW_MIN, SAME_MIN } from "../lib/judge.ts";
 const name = process.argv[2] || "닭가슴살";
 const readJsonl = (p: string) => (existsSync(p) ? readFileSync(p, "utf8").trim().split("\n").filter(Boolean).map((l) => JSON.parse(l)) : []);
 const ids: string[] = readJsonl(`data/work/normalized-${name}.jsonl`).map((r) => r.reportNo);
-// 사람 판정(/admin, scripts/pull-human.ts)은 규칙·Jev보다 먼저 쓴다: 그 쌍은 규칙·Jev 결과를 무시하고 사람 결정을 따른다
+// 검수 판정(/admin 사람 · 사람 대신 Claude, scripts/pull-human.ts)은 규칙·Jev보다 먼저 쓴다: 그 쌍은 규칙·Jev 결과를 무시하고 검수 결정을 따른다
 const human = new Map<string, string>(readJsonl(`data/work/human-${name}.jsonl`).map((h) => [pairKey(h.a, h.b), h.relation]));
 const byHuman = (p: { a: string; b: string }) => human.has(pairKey(p.a, p.b));
 const HUMAN_VOTE = 1000; // 묶음 합치기 표에서 사람 결정이 항상 이기게
@@ -62,7 +62,7 @@ const review = [
 
 const ruleOnly = buildGroups(ids, ruleEdges);
 const groups = buildGroups(ids, [...humanEdges, ...ruleEdges, ...jevEdges], cannotLink, votes);
-// 사람이 같다고 했는데 다른 사람 판정(다름·OEM)과 부딪쳐 못 묶은 쌍
+// 검수에서 같다고 했는데 이어 붙이면 다른 판정(다름·OEM)이나 규칙 충돌과 부딪쳐 못 묶은 쌍
 const groupOf = new Map([...groups].flatMap(([gid, m]) => m.map((id) => [id, gid] as const)));
 const humanBlocked = humanEdges.filter((e) => groupOf.get(e.a) !== groupOf.get(e.b));
 const sizes = [...groups.values()].map((g) => g.length).sort((a, b) => b - a);
@@ -75,5 +75,5 @@ const pct = (n: number) => `${((1 - n / ids.length) * 100).toFixed(1)}%`;
 console.log(`레코드 ${ids.length}건`);
 console.log(`  규칙만      → ${ruleOnly.size}묶음 (중복 ${pct(ruleOnly.size)} 줄임)`);
 console.log(`  규칙 + Jev  → ${groups.size}묶음 (중복 ${pct(groups.size)} 줄임), 2건 이상 묶음 ${sizes.filter((s) => s > 1).length}개, 가장 큰 묶음 ${sizes[0]}건`);
-console.log(`  사람 판정 ${human.size}쌍 반영 (같음 ${humanEdges.length}${humanBlocked.length ? `, 그중 다른 사람 판정과 부딪쳐 못 묶음 ${humanBlocked.length}` : ""})`);
+console.log(`  검수 판정 ${human.size}쌍 반영 (같음 ${humanEdges.length}${humanBlocked.length ? `, 그중 다른 판정·규칙 충돌로 못 묶음 ${humanBlocked.length}` : ""})`);
 console.log(`  OEM 형제 링크 ${oemLinks.length}쌍 · 검수 대기 ${review.length}쌍 (Jev 판정 ${judgments.length}쌍 중)`);
