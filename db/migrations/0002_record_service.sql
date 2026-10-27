@@ -1,0 +1,1 @@
+ALTER TABLE "records" ADD COLUMN "service" text DEFAULT 'C002' NOT NULL;
